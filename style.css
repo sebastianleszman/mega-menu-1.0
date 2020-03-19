@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+:root {
+  --primary: #f59921;
+  --white-trans: rgba(255, 255, 255, 0.5);
+  --white: #fff;
+  --light: #f4f4f4;
+  --silver: #c0c0c0;
+  --black: #000;
+  --dark: #333;
+  --gray: #707070;
+  --test: pink;
+  --test2: green;
+}
+/* default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+ul {
+  list-style: none;
+}
+li {
+  list-style-type: none;
+}
+a {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+/* mobile */
+
+@media (min-width: 960px) {
+  /* nav  */
+  nav {
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    
+  }
+  .menu__main {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background-color: var(--white);
+    position: relative; /* bo jest parentem menu-sub-4, ktore jest pozycjonowane absolunie */
+    text-align: center;
+  }
+  /* targetuje a aby elementach (a) nizej nie mialy tych wlasnosci */
+  .menu__main > a {
+    font-size: 20px;
+    padding: 20px;
+  }
+  .menu__main > a:hover {
+    color: var(--primary);
+  }
+  /* trick aby po hoverze na navigacji wyswietlalo sie dropdown */
+  .dropdown:hover + .menu__sub,
+  .menu__sub:hover {
+    display: grid;
+  }
+  .menu__sub {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 64px;
+
+    padding: 30px;
+    background-color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .menu__sub__category {
+    width: 100%;
+  }
+  .menu__sub__category__name {
+    text-align: left;
+    font-size: 16px;
+    padding: 10px 0 20px 0;
+  }
+  .menu__sub__item__container {
+    text-align: left;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .menu__sub__item__container > a {
+    font-size: 16px;
+    width: 80%;
+    border-bottom: 1px solid var(--silver);
+    padding: 5px;
+  }
+  .menu__sub__item__container a:hover {
+    color: var(--primary);
+  }
+  .unActive {
+    display: none;
+  }
+  /* modifiers */
+  .mega--4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}
